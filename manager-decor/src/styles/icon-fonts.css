@@ -1,0 +1,429 @@
+@font-face {
+    font-family: rbicon;
+    src: url('@/assets/fonts/rb-font.svg') format("svg"),
+         url('@/assets/fonts/rb-font.ttf') format("truetype"),
+         url('@/assets/fonts/rb-font.eot#iefix') format("embedded-opentype"),
+         url('@/assets/fonts/rb-font.woff') format("woff"),
+         url('@/assets/fonts/rb-font.woff2') format("woff2")
+}
+
+[class*=rb-icon-], [class^=rb-icon-] {
+    font-family: rbicon !important;
+    display: block;
+    speak: none;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
+.rb-icon-1-1:before {
+    content: ""
+}
+
+.rb-icon-16-9:before {
+    content: ""
+}
+
+.rb-icon-3-2:before {
+    content: ""
+}
+
+.rb-icon-3-4:before {
+    content: ""
+}
+
+.rb-icon-align-center:before {
+    content: ""
+}
+
+.rb-icon-align-left:before {
+    content: ""
+}
+
+.rb-icon-align-right:before {
+    content: ""
+}
+
+.rb-icon-audio-player:before {
+    content: ""
+}
+
+.rb-icon-audio-simple:before {
+    content: ""
+}
+
+.rb-icon-audio-weixin:before {
+    content: ""
+}
+
+.rb-icon-avatar-shape1:before {
+    content: ""
+}
+
+.rb-icon-avatar-shape2:before {
+    content: ""
+}
+
+.rb-icon-big-slide:before {
+    content: ""
+}
+
+.rb-icon-big:before {
+    content: ""
+}
+
+.rb-icon-btn-number:before {
+    content: ""
+}
+
+.rb-icon-btn-percent:before {
+    content: ""
+}
+
+.rb-icon-carousel:before {
+    content: ""
+}
+
+.rb-icon-corner-round:before {
+    content: ""
+}
+
+.rb-icon-corner-straight:before {
+    content: ""
+}
+
+.rb-icon-coupon-1:before {
+    content: ""
+}
+
+.rb-icon-coupon-2:before {
+    content: ""
+}
+
+.rb-icon-coupon-3:before {
+    content: ""
+}
+
+.rb-icon-coupon-4:before {
+    content: ""
+}
+
+.rb-icon-coupon-5:before {
+    content: ""
+}
+
+.rb-icon-coupon-6:before {
+    content: ""
+}
+
+.rb-icon-coupon-7:before {
+    content: ""
+}
+
+.rb-icon-coupon-8:before {
+    content: ""
+}
+
+.rb-icon-cube-custom:before {
+    content: ""
+}
+
+.rb-icon-cube-upto:before {
+    content: ""
+}
+
+.rb-icon-cube:before {
+    content: ""
+}
+
+.rb-icon-cuberow:before {
+    content: ""
+}
+
+.rb-icon-cuberow1:before {
+    content: ""
+}
+
+.rb-icon-cuberow2:before {
+    content: ""
+}
+
+.rb-icon-cubeto:before {
+    content: ""
+}
+
+.rb-icon-cubeto1:before {
+    content: ""
+}
+
+.rb-icon-delete:before {
+    content: ""
+}
+
+.rb-icon-drag-handler:before {
+    content: ""
+}
+
+.rb-icon-edit:before {
+    content: ""
+}
+
+.rb-icon-feature:before {
+    content: ""
+}
+
+.rb-icon-fixed:before {
+    content: ""
+}
+
+.rb-icon-float:before {
+    content: ""
+}
+
+.rb-icon-font-bold:before {
+    content: ""
+}
+
+.rb-icon-font-m:before {
+    content: ""
+}
+
+.rb-icon-font-regular:before {
+    content: ""
+}
+
+.rb-icon-font-s:before {
+    content: ""
+}
+
+.rb-icon-font-x:before {
+    content: ""
+}
+
+.rb-icon-hotarea:before {
+    content: ""
+}
+
+.rb-icon-huadong:before {
+    content: ""
+}
+
+.rb-icon-huanhang:before {
+    content: ""
+}
+
+.rb-icon-hybrid:before {
+    content: ""
+}
+
+.rb-icon-image-ad-normal:before {
+    content: ""
+}
+
+.rb-icon-img-contain:before {
+    content: ""
+}
+
+.rb-icon-img-cover:before {
+    content: ""
+}
+
+.rb-icon-indicator-1:before {
+    content: ""
+}
+
+.rb-icon-indicator-2:before {
+    content: ""
+}
+
+.rb-icon-indicator-3:before {
+    content: ""
+}
+
+.rb-icon-indicator-4:before {
+    content: ""
+}
+
+.rb-icon-line-dashed:before {
+    content: ""
+}
+
+.rb-icon-line-dotted:before {
+    content: ""
+}
+
+.rb-icon-line-no-padding:before {
+    content: ""
+}
+
+.rb-icon-line-padding:before {
+    content: ""
+}
+
+.rb-icon-line-solid:before {
+    content: ""
+}
+
+.rb-icon-line:before {
+    content: ""
+}
+
+.rb-icon-list:before {
+    content: ""
+}
+
+.rb-icon-menu-fixed:before {
+    content: ""
+}
+
+.rb-icon-menu-left:before {
+    content: ""
+}
+
+.rb-icon-menu-normal:before {
+    content: ""
+}
+
+.rb-icon-menu-top:before {
+    content: ""
+}
+
+.rb-icon-nav-slide:before {
+    content: ""
+}
+
+.rb-icon-neirong:before {
+    content: ""
+}
+
+.rb-icon-progress-1:before {
+    content: ""
+}
+
+.rb-icon-progress-2:before {
+    content: ""
+}
+
+.rb-icon-scroll:before {
+    content: ""
+}
+
+.rb-icon-search-fixed:before {
+    content: ""
+}
+
+.rb-icon-search-normal:before {
+    content: ""
+}
+
+.rb-icon-search-round:before {
+    content: ""
+}
+
+.rb-icon-search-scroll:before {
+    content: ""
+}
+
+.rb-icon-search-square:before {
+    content: ""
+}
+
+.rb-icon-search-sticky:before {
+    content: ""
+}
+
+.rb-icon-shadow:before {
+    content: ""
+}
+
+.rb-icon-shop-info-1:before {
+    content: ""
+}
+
+.rb-icon-shop-info-2:before {
+    content: ""
+}
+
+.rb-icon-shop-info-3:before {
+    content: ""
+}
+
+.rb-icon-shop-info-4:before {
+    content: ""
+}
+
+.rb-icon-shop-info-5:before {
+    content: ""
+}
+
+.rb-icon-shopnote-hybrid:before {
+    content: ""
+}
+
+.rb-icon-shopnote-waterfall:before {
+    content: ""
+}
+
+.rb-icon-small-slide:before {
+    content: ""
+}
+
+.rb-icon-small:before {
+    content: ""
+}
+
+.rb-icon-social-fans:before {
+    content: ""
+}
+
+.rb-icon-swipe:before {
+    content: ""
+}
+
+.rb-icon-tabs-1:before {
+    content: ""
+}
+
+.rb-icon-tabs-2:before {
+    content: ""
+}
+
+.rb-icon-tabs-3:before {
+    content: ""
+}
+
+.rb-icon-text-position-cover:before {
+    content: ""
+}
+
+.rb-icon-text-position-follow:before {
+    content: ""
+}
+
+.rb-icon-three:before {
+    content: ""
+}
+
+.rb-icon-up2end:before {
+    content: ""
+}
+
+.rb-icon-white:before {
+    content: ""
+}
+
+.rb-icon-xianxiake:before {
+    content: ""
+}
+
+.rb-icon-zhibo:before {
+    content: ""
+}
+
+.rb-icon-zhuanlan:before {
+    content: ""
+}

@@ -1,0 +1,104 @@
+.image-selector {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+  border-radius: 2px;
+  border: 1px solid #e5e5e5;
+  user-select: none;
+  &__add {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    color: #155bd4;
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: all ease .2s;
+    &:hover {
+      background-color: rgba(#155bd4, 0.1);
+    }
+    &-icon {
+      font-size: 22px;
+    }
+    &-text {
+      font-size: 12px;
+      margin-top: 4px;
+    }
+  }
+  &__image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    &-img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &__change {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+    text-align: center;
+    color: #ffffff;
+    background-color: rgba(0,0,0,.5);
+    cursor: pointer;
+  }
+  &__input {
+    display: none;
+  }
+  &__upload {
+    border: none;
+    ::v-deep .el-upload {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 60px;
+      height: 60px;
+      line-height: normal;
+      &:hover,
+      &:focus {
+        i {
+          color: #155bd4;
+        }
+        .image-selector__tip {
+          color: #155bd4;
+        }
+      }
+    }
+    ::v-deep .el-icon-plus {
+      font-size: 14px;
+    }
+    ::v-deep .el-upload-list__item {
+      width: 60px;
+      height: 60px;
+      margin: 0;
+    }
+    ::v-deep .el-progress {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 60px;
+      height: 60px;
+    }
+    ::v-deep .el-progress-circle {
+      width: 50px !important;
+      height: 50px !important;
+    }
+    ::v-deep .el-progress__text {
+      font-size: 14px !important;
+    }
+    ::v-deep .image-selector__tip {
+      font-size: 12px;
+      margin-top: 5px;
+    }
+  }
+}

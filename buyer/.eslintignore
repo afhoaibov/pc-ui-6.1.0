@@ -1,0 +1,9 @@
+build/*.js
+config/*.js
+src/assets
+src/plugins
+src/components/AliyunAfs.js
+src/components/Decors
+ui-components
+ui-domain
+static

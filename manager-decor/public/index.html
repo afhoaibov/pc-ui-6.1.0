@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <script src="<%= BASE_URL %>js/envs.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <script>
+      const urlParams = new URLSearchParams(window.location.search)
+      const type = urlParams.get('decor_type')
+      if (!urlParams.has('decor_type') || (type !== 'seller' && type !== 'admin')) {
+        alert('请从商家端或者管理端进入！')
+        new XMLHttpRequest().abort()
+        window.stop()
+      }
+    </script>
+    <script src="<%= BASE_URL %>js/jquery.slim.min.js"></script>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>

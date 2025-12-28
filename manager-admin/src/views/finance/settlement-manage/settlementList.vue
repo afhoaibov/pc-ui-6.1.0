@@ -1,0 +1,197 @@
+<template>
+  <div>
+    <div class="total-price">
+      <div>
+        <el-card shadow="always" style="width: fit-content">
+          <div>已对账金额</div>
+          <div class="total-price-price">{{ (settled || '0.00') | unitPrice}}</div>
+        </el-card>
+      </div>
+      <div>
+        <el-card shadow="always" style="width: fit-content">
+          <div>未对账金额</div>
+          <div class="total-price-price">{{ (waitSettled || '0.00') | unitPrice}}</div>
+        </el-card>
+      </div>
+    </div>
+    <en-table-layout
+      :tableData="tableData.data"
+      :loading="loading"
+    >
+      <div slot="toolbar" class="inner-toolbar">
+        <div class="toolbar-btns">
+        </div>
+        <div class="toolbar-search">
+          <en-table-search
+            @search="searchEvent"
+            @advancedSearch="advancedSearchEvent"
+            advanced
+            advancedWidth="465"
+            placeholder="请输入结算单号"
+          >
+            <template slot="advanced-content">
+              <el-form ref="advancedForm" :model="advancedForm" label-width="80px">
+                <el-form-item label="店铺名称">
+                  <en-shop-picker @changed="(shop) => { advancedForm.seller_id = shop.shop_id }"/>
+                </el-form-item>
+              </el-form>
+            </template>
+          </en-table-search>
+        </div>
+      </div>
+      <template slot="table-columns">
+        <el-table-column prop="bill_sn" label="结算单号">
+          <template slot-scope="scope">
+            <clipboard :text="scope.row.bill_sn" />
+          </template>
+        </el-table-column>
+        <el-table-column prop="shop_name" label="店铺名称"/>
+        <el-table-column prop="price" :formatter="MixinFormatPrice" label="订单金额"/>
+        <el-table-column prop="commi_price" :formatter="MixinFormatPrice" label="收取佣金"/>
+        <el-table-column prop="refund_price" :formatter="MixinFormatPrice" label="退单金额"/>
+        <el-table-column prop="refund_commi_price" :formatter="MixinFormatPrice" label="退还佣金"/>
+        <el-table-column prop="bill_price" :formatter="MixinFormatPrice" label="本期应结"/>
+        <el-table-column prop="status_text" label="结算状态"/>
+        <el-table-column prop="create_time" :formatter="MixinUnixToDate" label="出账日期"/>
+        <el-table-column prop="start_time" :formatter="MixinUnixToDate" label="开始日期"/>
+        <el-table-column prop="end_time" :formatter="MixinUnixToDate" label="结束日期"/>
+        <el-table-column label="操作" width="200">
+          <template slot-scope="scope">
+            <el-button
+              size="mini"
+              type="primary"
+              @click="handleOperateSettlement(scope.$index, scope.row)">查看</el-button>
+
+            <el-button
+              v-if="scope.row.status == 'PASS'"
+              size="mini"
+              @click="handleOperate(scope.$index, scope.row)">设为已结算</el-button>
+          </template>
+
+
+        </el-table-column>
+      </template>
+      <el-pagination
+        v-if="tableData"
+        slot="pagination"
+        @size-change="handlePageSizeChange"
+        @current-change="handlePageCurrentChange"
+        :current-page="tableData.page_no"
+        :page-sizes="[10, 20, 50, 100]"
+        :page-size="tableData.page_size"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="tableData.data_total">
+      </el-pagination>
+    </en-table-layout>
+  </div>
+</template>
+
+<script>
+  import * as API_Order from '@/api/order'
+
+  export default {
+    name: 'settlementList',
+    data() {
+      return {
+        // 列表loading状态
+        loading: false,
+        // 列表参数
+        params: {
+          page_no: 1,
+          page_size: 10
+        },
+        // 列表数据
+        tableData: '',
+        /** 高级搜索数据 */
+        advancedForm: {},
+        waitSettled: 0,
+        settled: 0
+      }
+    },
+    watch: {
+      $route: {
+        immediate: true,
+        handler(newVal) {
+          if (newVal.name !== 'settlement') return
+          this.GET_SettlementList()
+          this.GET_SettlementTotalPrice()
+        }
+      }
+    },
+    methods: {
+      /** 分页大小发生改变 */
+      handlePageSizeChange(size) {
+        this.params.page_size = size
+        this.GET_SettlementList()
+      },
+
+      /** 分页页数发生改变 */
+      handlePageCurrentChange(page) {
+        this.params.page_no = page
+        this.GET_SettlementList()
+      },
+
+      /** 当选择项发生变化 */
+      handleSelectionChange(val) {
+        this.selectedData = val.map(item => item.id)
+      },
+
+      /** 操作结算单 */
+      handleOperateSettlement(index, row) {
+        this.$router.push({ name: 'settlementDetail', params: { id: row.bill_id }})
+      },
+
+      /** 搜索事件触发 */
+      searchEvent(data) {
+        this.params.page_no = 1
+        this.params.bill_sn = data
+        if (!data) delete this.params.bill_sn
+        this.GET_SettlementList()
+      },
+
+      /** 高级搜索事件触发 */
+      advancedSearchEvent() {
+        this.params.page_no = 1
+        this.params = {
+          ...this.params,
+          ...this.advancedForm
+        }
+        delete this.params.bill_sn
+        this.GET_SettlementList()
+      },
+
+      /** 获取结算单列表 */
+      GET_SettlementList() {
+        this.loading = true
+        API_Order.getSettlementList(this.params).then(response => {
+          this.loading = false
+          this.tableData = response
+        }).catch(() => { this.loading = false })
+      },
+
+      GET_SettlementTotalPrice() {
+        API_Order.getSettlementTotalPrice(this.params).then(response => {
+          this.waitSettled = response.wait_settled
+          this.settled = response.settled
+        }).catch(() => { this.loading = false })
+      }
+    }
+  }
+</script>
+
+<style type="text/scss" lang="scss" scoped>
+ .total-price{
+   display: flex;
+   gap: 24px;
+   margin:10px 0px 0px 5px
+ }
+ .total-price-price{
+   color: #2F88FA;
+   margin-top: 4px;
+   font-size:16px;
+   font-weight:bold;
+   text-align: center;
+   margin-top: 10px;
+
+ }
+</style>

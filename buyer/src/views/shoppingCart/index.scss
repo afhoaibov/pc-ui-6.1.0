@@ -1,0 +1,208 @@
+@use "../../assets/styles/color" as theme;
+
+.shopping-cart-wrap {
+  background: #fff;
+  padding-bottom: 20px;
+  min-height: calc(100vh - 31px - 219px);
+  position: relative;
+}
+::v-deep .check {
+  display: inline-block;
+  position: relative;
+  top: -1px;
+  width: 13px;
+  height: 13px;
+  line-height: normal;
+  margin-right: 10px;
+  background-color: #fff;
+  border: 1px solid #dcdcdc;
+  border-radius: 3px;
+  transition: background-color 0.2s ease-in-out;
+  vertical-align: middle;
+  &.checked {
+    background-color: theme.$color-main;
+    border-color: theme.$color-main;
+    i { opacity: 1 }
+  }
+  i {
+    opacity: 0;
+    font-size: 14px !important;
+    color: #fff;
+    user-select: none;
+    transition: opacity 0.2s ease-in-out;
+  }
+}
+
+.cart-header {
+  width: 100%;
+  background: #fff;
+  .w {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+    .logo {
+      width: 260px;
+      height: 60px;
+    }
+  }
+}
+
+.shopping-cart-content {
+  width: 100%;
+  margin-top: 20px;
+  font-size: 12px;
+  padding-bottom: 20px;
+  .cart-check-bar {
+    display: block;
+    width: 100%;
+    height: 60px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    &.fixed-bottom {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      min-width: 1210px;
+      box-shadow: 0 0 10px #ccc;
+      background-color: #ffffff;
+    }
+    .check-bar {
+      z-index: 10;
+      height: 60px;
+      background-color: #fff;
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      .selected-goods-content {
+        position: absolute;
+        top: -115px;
+        left: 0;
+        right: 0;
+        height: 115px;
+        background: hsla(0, 0%, 40%, .85);
+        color: #fff;
+        .title {
+          line-height: 18px;
+          padding: 5px 0 0 10px;
+          font-size: 14px;
+          .count {
+            color: theme.$color-main;
+            font-weight: 600;
+          }
+        }
+        .inner {
+          display: flex;
+          padding: 5px 10px;
+          justify-content: space-between;
+          align-items: center;
+          height: 84px;
+          .arrow-icon {
+            font-size: 40px;
+            font-weight: 700;
+            cursor: pointer;
+            &:hover {
+              color:hsla(0, 0%, 40%, 0.95);
+            }
+          }
+          .goods-inner {
+            width: 100%;
+            overflow-x: scroll;
+            &::-webkit-scrollbar {
+              display:none
+            }
+          }
+          .goods-content-list {
+            display: flex;
+            justify-content: flex-start;
+
+          }
+          .goods-img {
+            height: 80px;
+            width: 80px;
+            border: 1px solid #eaeaea;
+            background: #fff;
+            margin-right: 10px;
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
+      }
+    }
+    .check-bar-left {
+      display: flex;
+      align-items: center;
+      height: 60px;
+      color: #dedede;
+      overflow: hidden;
+      .select-all {
+        float: left;
+        margin: 0 18px 0 20px;
+        cursor: pointer;
+        span { color: #333333; font-size: 13px }
+        b { font-style: normal }
+      }
+      em { font-size: 16px }
+      .check-tool-a {
+        margin: 0 18px;
+        font-size: 12px;
+        color: #999;
+      }
+    }
+    .check-bar-right {
+      display: flex;
+      align-items: center;
+      height: 60px;
+      .right-top {
+        display: flex;
+        align-items: center;
+      }
+      .discount-price {
+        text-align: right;
+        margin-right: 20px;
+        font-size: 13px;
+        color: #777;
+        font-weight: 600;
+      }
+
+      .price-box {
+        display: flex;
+        align-items: flex-start;
+        .discount-box {
+          cursor: pointer;
+          margin-left: 4px;
+          .discount-icon {
+            color: #ff9800;
+            font-size: 17px;
+          }
+        }
+      }
+      .check-btn {
+        display: inline-block;
+        width: 130px;
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+        background-color: theme.$color-main;
+        font-weight: bold;
+        font-size: 17px;
+        color: #fff;
+        cursor: pointer;
+        user-select: none;
+        transition: background-color 0.2s ease-in-out;
+        &.disabled {
+          background-color: #ccc;
+          cursor: not-allowed;
+        }
+      }
+      em { font-size: 16px; color: #dedede }
+      .text-item { margin: 0 20px }
+      .price i { font-size: 20px }
+    }
+  }
+
+}

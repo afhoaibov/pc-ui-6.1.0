@@ -1,0 +1,123 @@
+.video-selector {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 2px;
+  border: 1px solid #e5e5e5;
+  user-select: none;
+  &__add {
+    display: inline-block;
+    width: 62px;
+    height: 62px;
+    line-height: 62px;
+    position: relative;
+    text-align: center;
+    border: none;
+    background: #ffffff;
+    box-shadow: 0 2px 4px 0 rgba(52,57,65,0.2);
+    border-radius: 2px;
+    font-size: 24px;
+    color: #155bd4;
+    cursor: pointer;
+  }
+  &__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    &::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      left: 50%;
+      top: 50%;
+      margin-top: -10px;
+      margin-left: -10px;
+      background-image: url('../../../assets/icon-video-play.png');
+      background-repeat: no-repeat;
+      background-size: 20px auto;
+    }
+    .video-selector__cover {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      border-radius: 2px;
+    }
+    &:hover .video-selector__image-del-icon {
+      display: block;
+    }
+    &-del-icon {
+      display: none;
+      position: absolute;
+      z-index: 2;
+      top: -10px;
+      right: -10px;
+      border-radius: 50%;
+      color: #bbbbbb;
+      font-size: 20px;
+      background-color: #ffffff;
+      line-height: normal;
+      cursor: pointer;
+    }
+  }
+  &__upload {
+    border: none;
+    overflow: hidden;
+    &-slot {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
+    ::v-deep .el-upload {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 60px;
+      height: 60px;
+      line-height: normal;
+      &:hover,
+      &:focus {
+        i {
+          color: #155bd4;
+        }
+        .video-selector__tip {
+          color: #155bd4;
+        }
+      }
+    }
+    ::v-deep .el-icon-plus {
+      font-size: 14px;
+    }
+    ::v-deep .el-upload-list__item {
+      width: 60px;
+      height: 60px;
+      margin: 0;
+    }
+    ::v-deep .el-progress {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 60px;
+      height: 60px;
+    }
+    ::v-deep .el-progress-circle {
+      width: 50px !important;
+      height: 50px !important;
+    }
+    ::v-deep .el-progress__text {
+      font-size: 14px !important;
+    }
+    ::v-deep .video-selector__tip {
+      font-size: 12px;
+      margin-top: 5px;
+    }
+  }
+}

@@ -1,0 +1,217 @@
+$body-height: 500px;
+$border-color: #dcdee0;
+.resource-picker__dialog {
+  p {
+    margin: 0;
+    padding: 0;
+  }
+  .el-dialog__header {
+    border-bottom: 1px solid $border-color;
+    margin-top: -1px;
+  }
+  .el-dialog__body {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: $body-height;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+  .el-dialog__footer {
+    border-top: 1px solid $border-color;
+    margin-bottom: -1px;
+  }
+  &-body {
+    position: relative;
+  }
+  &-search {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  &-content {
+    display: flex;
+  }
+  &-content-left {
+    flex-shrink: 0;
+    width: 230px;
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: -10px;
+      width: 1px;
+      height: 100%;
+      background-color: $border-color;
+    }
+  }
+  &-tree {
+    margin-top: 10px;
+    box-sizing: border-box;
+    user-select: none;
+    .el-tree {
+      height: $body-height - 156px - 5px;
+      overflow-y: auto;
+      margin-top: 5px;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+    &-node {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      span:last-child {
+        color: #999999;
+      }
+    }
+  }
+  &-content-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    padding-left: 20px;
+    box-sizing: border-box;
+  }
+  &-list {
+    height: $body-height - 20px - 56px - 37px;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    &::after {
+      content: '';
+      clear: both;
+    }
+    &-empty {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      user-select: none;
+    }
+  }
+  &-item {
+    float: left;
+    position: relative;
+    width: 130px;
+    height: 205px;
+    margin-bottom: 10px;
+		border: 1px solid #fff;
+    cursor: pointer;
+    border-radius: 4px;
+    overflow: hidden;
+    &:not(:nth-child(5n)) {
+      margin-right: 15px;
+    }
+		
+    &.selected {
+      .resource-picker__dialog-item-selected-icon {
+        display: block;
+      }
+			border: 1px solid #409EFF;
+			&:before {
+				content: '';
+				position: absolute;
+				right: 0;
+				top: 0;
+				z-index: 2;
+				border: 17px solid #409EFF;
+				border-bottom-color: transparent;
+				border-left-color: transparent;
+			}
+			&:after {
+				content: '';
+				width: 8px;
+				height: 14px;
+				position: absolute;
+				right: 6px;
+				top: 2px;
+				z-index: 2;
+				border: 2px solid #fff;
+				border-top-color: transparent;
+				border-left-color: transparent;
+				transform: rotate(45deg);
+			}
+    }
+    &-img {
+      position: relative;
+      width: 100%;
+      height: 130px;
+      background-size: cover;
+    }
+    &-info {
+      position: relative;
+      box-sizing: border-box;
+      padding: 5px;
+      color: #999999;
+      font-size: 12px;
+      border-top: 1px solid $border-color;
+      p {
+        margin-bottom: 3px;
+      }
+    }
+    &:hover .resource-picker__dialog-item-delete {
+      display: block;
+    }
+    &-delete {
+      display: none;
+      position: absolute;
+      bottom: 0;
+      z-index: 3;
+      width: 100%;
+      text-align: center;
+      height: 25px;
+      line-height: 25px;
+      color: #ffffff;
+      font-size: 12px;
+      background-color: #F56C6C;
+    }
+    &-name {
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    &-selected-icon {
+      display: none;
+      position: absolute;
+      top: -2px;
+      right: -23px;
+      color: #ffffff;
+      width: 60px;
+      height: 20px;
+      text-align: center;
+      background-color: #409EFF;
+      transform: rotate(45deg);
+      line-height: 25px;
+      > i {
+        display: inline-block;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+  &-page {
+    text-align: right;
+    margin-top: 5px;
+  }
+  &-upload {
+    &-list {
+      .el-form-item {
+        display: flex;
+      }
+      .el-form-item__label {
+        flex-shrink: 0;
+      }
+      .el-form-item__content {
+        max-height: 325px;
+        overflow-y: auto;
+      }
+    }
+    &-slot {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

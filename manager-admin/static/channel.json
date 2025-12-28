@@ -1,0 +1,15 @@
+{
+	"client_type":"WAP",
+	"page_data": [{
+			"tpl_id":23,
+			"blockList": [{
+				"block_type": "IMAGE",
+				"block_value": "http://shoptnt-statics.oss-cn-beijing.aliyuncs.com/demo/56256727.jpg",
+				"block_opt": {"opt_type": "GOODS","opt_value": "127"}
+			}]
+		}
+	],
+	"page_id": 16,
+	"page_name": "mobile_floor",
+	"page_type": "INDEX"
+}
